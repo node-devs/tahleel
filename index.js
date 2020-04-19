@@ -1,4 +1,4 @@
-const express = requir ("express")
+const express = require ("express")
 const app=express()
 
 app.git("/face",function(erq,res){
