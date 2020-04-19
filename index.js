@@ -1,9 +1,9 @@
 const express = require ("express")
 const app=express()
 
-app.git("/face",function(erq,res){
+app.get("/face",function(req,res){
     res.send("give your ID")
 })
 
 app.listen(7777)
-console.loge("app start at port 7777")
+console.log("app start at port 7777")
