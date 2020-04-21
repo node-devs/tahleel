@@ -1,9 +1,13 @@
 const express = require ("express")
 const app=express()
 
-app.get("/face",function(req,res){
-    res.send("give your ID")
+app.get("/data",function(req,res){
+    res.send("welcome " +req.query.name+ " your age " +req.query.age)
 })
 
-app.listen(7777)
-console.log("app start at port 7777")
+//app.get("/",function(req,res){
+  //  res.send("welcome "+req.query.name+" your age is "+req.query.age)
+//})
+
+app.listen(1234)
+console.log("app start at port 1234")
