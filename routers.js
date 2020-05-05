@@ -30,5 +30,24 @@ router.get("/getUsers/:id",function(req,res){
     user.catch((err) => res.json(err))
 })
 
+router.put("/updateUser/:id",function(req,res){
+    const id = req.params.id
+    const data = req.body
+
+    const user = userModel.findOneAndUpdate({ _id: id },{ $set: data})
+    
+    user.then(() => res.send("Operation is done successfully"))
+    user.catch((err) => res.josn(err))
+})
+
+router.delete("/deleteUser/:id",function(req,res){
+    const id = req.params.id
+
+    const user = userModel.findByIdAndDelete({ _id: id})
+
+    user.then(() => res.send("User was deleted"))
+    user.catch((err) => res.json(err))
+})
+
 
 module.exports = router
