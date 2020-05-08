@@ -1,20 +1,25 @@
-const express = require ("express")
-const routers = require("./routers")
+const express = require("express")
+const Router = require("./routers")
+const {PORT,db_url,option} = require("./config")
 const mongoose = require("mongoose")
-const {db_url,options} =require("./config")
+const logger = require("./middleware/logger")
+const app = express()
 
-const app=express()
-
-mongoose.connect(db_url,options,function(err){
+mongoose.connect(db_url,option,function(err){
     if (err) console.error(err)
-
     console.log("Database connected")
+    
 })
 
 app.use(express.json())
-app.use(express.urlencoded())
+app.use(express.urlencoded({ extended: false}))
 
-app.use(routers)
+app.use(logger)
 
-app.listen(7777)
-console.log("app start at port 7777")
+app.use(Router)
+
+
+
+app.listen(PORT)
+console.log("server start")
+
